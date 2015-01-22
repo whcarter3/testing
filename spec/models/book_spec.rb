@@ -16,9 +16,19 @@ RSpec.describe Book, :type => :model do
 		expect(book).to be_invalid
 	end
 
-	it "should return authour name as a string"
+	it "should return author name as a string" do
+		book = FactoryGirl.build(:book)
+		expect(book.author_name).to eq("Allen Ginsberg")
+	end
 
-	it "should be valid without a summary"
-	it "should be invalid without a page count"
+	it "should be valid without a summary" do
+		book = FactoryGirl.build(:book, summary: nil)
+		expect(book).to be_valid
+	end
+
+	it "should be invalid without a page count" do
+		book = FactoryGirl.build(:book, page_count: nil)
+		expect(book).to be_invalid
+	end
 
 end
